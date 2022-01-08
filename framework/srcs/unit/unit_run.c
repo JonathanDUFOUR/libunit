@@ -55,8 +55,9 @@ static int	__output(char const *funcname, char const *testname,
 int	unit_run(t_unit *const node)
 {
 	pid_t	child;
-	int		status;
+	int	status;
 
+	status = 0;
 	child = fork();
 	if (child == -1)
 		return (EXIT_FAILURE);
@@ -69,5 +70,6 @@ int	unit_run(t_unit *const node)
 	}
 	if (wait(&status) == -1)
 		return (EXIT_FAILURE);
+	status = (char)(status >> 8);
 	return (__output(node->funcname, node->testname, status));
 }

@@ -14,5 +14,18 @@
 
 int	strchr_null_test(void)
 {
-	return (EXIT_SUCCESS);
+	char	str[] = NULL;
+	char	c;
+	char	*res_exp;
+	char	*res_act;
+
+	c = 's';
+	res_exp = NULL;
+
+	res_act = strchr(str, c);
+	
+	if (res_exp == res_act)
+		return (0);
+	else
+		return (-1);
 }

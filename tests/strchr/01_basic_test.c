@@ -15,19 +15,18 @@
 
 int	strchr_basic_test(void)
 {
-	char	*str;
+	char	str[] = "test";
 	char	c;
 	char	*res_exp;
 	char	*res_act;
 
-	str = "test";
 	c = 's';
 	res_exp = &str[2];
 
-	res_act = NULL;
-	///res_act = (char *) 1;//strchr(str, c);
+	res_act = strchr(str, c);
+	
 	if (res_exp == res_act)
-		return (EXIT_SUCCESS);
+		return (0);
 	else
 		return (-1);
 }
