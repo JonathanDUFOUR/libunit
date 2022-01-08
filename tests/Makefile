@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 04:39:59 by jodufour          #+#    #+#              #
-#   Updated: 2022/01/08 15:31:20 by                  ###   ########.fr         #
+#    Updated: 2022/01/08 16:56:10 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,19 +45,26 @@ UNIT_A			:=	${addprefix ${UNIT_DIR}, ${UNIT_A}}
 #            SOURCE FILES            #
 ######################################
 SRC				=	\
+					${addprefix math/,			\
+						00_launcher.c			\
+						01_sigfpe_test.c		\
+					}							\
 					${addprefix strchr/,		\
 						00_launcher.c			\
 						01_basic_test.c			\
 						02_null_test.c			\
 					}							\
-					${addprefix math/,			\
-						00_launcher.c			\
-						01_sigfpe_test.c		\
-					}							\
 					${addprefix strcmp/,		\
 						00_launcher.c			\
 						01_basic_test.c			\
 						02_null_test.c			\
+					}							\
+					${addprefix strcpy/,		\
+						00_launcher.c			\
+						01_basic_test.c			\
+						02_const_test.c			\
+						03_freed_test.c			\
+						04_misaligned_test.c	\
 					}							\
 					${addprefix strlen/,		\
 						00_launcher.c			\
@@ -87,7 +94,6 @@ CFLAGS			+=	-MMD -MP
 CFLAGS			+=	-I${UNIT_INC_DIR}
 
 LDFLAGS			=	-L${UNIT_DIR} -lunit
-LDFLAGS			+= 	-lm
 
 VG_OPTION		=	--track-fds=yes
 VG_OPTION		+=	--show-leak-kinds=all

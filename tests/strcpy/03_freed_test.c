@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_sigfpe_test.c                                   :+:      :+:    :+:   */
+/*   03_freed_test.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 07:10:58 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 15:56:44 by jodufour         ###   ########.fr       */
+/*   Created: 2022/01/08 16:10:05 by jodufour          #+#    #+#             */
+/*   Updated: 2022/01/08 16:58:59 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <string.h>
 
-int	math_sigfpe_test(void)
+int	strcpy_freed_test(void)
 {
-	if (div(0, 0).quot == 0)
+	char	dst[42];
+	char	*src;
+
+	src = malloc(15);
+	if (!src)
+		return (EXIT_FAILURE);
+	free(src);
+	if (strcpy(dst, src + 42) == dst && !strcmp(src + 42, dst))
 		return (0);
 	else
 		return (-1);

@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_sigfpe_test.c                                   :+:      :+:    :+:   */
+/*   01_basic_test.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 07:10:58 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 15:56:44 by jodufour         ###   ########.fr       */
+/*   Created: 2022/01/08 16:01:17 by jodufour          #+#    #+#             */
+/*   Updated: 2022/01/08 16:03:01 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <string.h>
 
-int	math_sigfpe_test(void)
+int	strcpy_basic_test(void)
 {
-	if (div(0, 0).quot == 0)
+	char	dst[14];
+	char	src[] = "Hello World !";
+
+	if (strcpy(dst, src) == dst && !strcmp(src, dst))
 		return (0);
 	else
 		return (-1);
