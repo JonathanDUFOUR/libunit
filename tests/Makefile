@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 04:39:59 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/08 12:51:34 by jodufour         ###   ########.fr        #
+#    Updated: 2022/01/08 15:48:24 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,8 @@ SRC				=	\
 						02_null_test.c			\
 						03_bad_len_test.c		\
 						04_uninitialized_test.c	\
+						05_lorem_ipsum_test.c	\
+						06_free_test.c			\
 					}							\
 					main.c						\
 					ratio.c

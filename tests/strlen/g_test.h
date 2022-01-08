@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:58:11 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 12:51:14 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/08 15:48:06 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,16 @@ int	strlen_basic_test(void);
 int	strlen_null_test(void);
 int	strlen_bad_len_test(void);
 int	strlen_uninitialized_test(void);
+int	strlen_lorem_ipsum_test(void);
+int	strlen_free_test(void);
 
 static t_test const		g_test[] = {
 {"Basic test", strlen_basic_test},
 {"NULL test", strlen_null_test},
 {"Bad len test", strlen_bad_len_test},
 {"Uninitialized test", strlen_uninitialized_test},
+{"Lorem ipsum test", strlen_lorem_ipsum_test},
+{"Free test", strlen_free_test},
 {0}
 };
 
