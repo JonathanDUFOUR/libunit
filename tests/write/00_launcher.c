@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:19:10 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 15:29:55 by                  ###   ########.fr       */
+/*   Updated: 2022/01/08 15:55:03 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "g_test.h"
 #include "t_unit_lst.h"
 
-int	math_launcher(void)
+int	write_launcher(void)
 {
 	t_unit_lst	lst;
 	int			ret;
@@ -25,9 +25,8 @@ int	math_launcher(void)
 	lst.size = 0;
 	ret = EXIT_FAILURE;
 	i = 0;
-	printf("testme!\nn\n\n\n\n");
 	while (g_test[i].name && g_test[i].call
-		&& !unit_lst_add_back(&lst, "MATH", g_test[i].name, g_test[i].call))
+		&& !unit_lst_add_back(&lst, "WRITE", g_test[i].name, g_test[i].call))
 		++i;
 	if (!g_test[i].name && !g_test[i].call)
 		ret = unit_lst_run(&lst);

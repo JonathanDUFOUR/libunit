@@ -6,7 +6,11 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 04:39:59 by jodufour          #+#    #+#              #
+<<<<<<< HEAD
 #    Updated: 2022/01/08 16:56:10 by jodufour         ###   ########.fr        #
+=======
+#   Updated: 2022/01/08 15:59:52 by                  ###   ########.fr       # #
+>>>>>>> 32fb36715a0a0a430877d7bd8fbb06dd1b1cf3e2
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,6 +58,17 @@ SRC				=	\
 						01_basic_test.c			\
 						02_null_test.c			\
 					}							\
+<<<<<<< HEAD
+=======
+					${addprefix math/,			\
+						00_launcher.c			\
+						01_sigfpe_test.c		\
+					}							\
+					${addprefix write/,			\
+						00_launcher.c			\
+						01_redirect_test.c		\
+					}							\
+>>>>>>> 32fb36715a0a0a430877d7bd8fbb06dd1b1cf3e2
 					${addprefix strcmp/,		\
 						00_launcher.c			\
 						01_basic_test.c			\
@@ -73,7 +88,7 @@ SRC				=	\
 						03_bad_len_test.c		\
 						04_uninitialized_test.c	\
 						05_lorem_ipsum_test.c	\
-						06_free_test.c			\
+                        06_free_test.c			\
 					}							\
 					main.c						\
 					ratio.c

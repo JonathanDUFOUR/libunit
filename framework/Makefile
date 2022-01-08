@@ -46,7 +46,8 @@ SRC		=	\
 				unit_new.c					\
 				unit_run.c					\
 			}								\
-			putsize.c
+			putsize.c						\
+			redirect_buffer.c
 
 ######################################
 #            OBJECT FILES            #
