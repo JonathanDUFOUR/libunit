@@ -29,6 +29,9 @@ static t_result const	g_result[] = {
 {-1, RED "KO" RESET},
 {SIGSEGV | (1 << 7), RED "SIGSEGV" RESET},
 {SIGBUS | (1 << 7), RED "SIGBUS" RESET},
+{SIGABRT | (1 << 7), RED "SIGABRT" RESET},
+{SIGFPE | (1 << 7), RED "SIGFPE" RESET},
+{SIGILL | (1 << 7), RED "SIGILL" RESET},
 {0}
 };
 
