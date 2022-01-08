@@ -6,12 +6,13 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:15:17 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 09:23:30 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/08 15:36:36 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
+#include <stdio.h>
 #include "unit.h"
 #include "lookup_launch.h"
 

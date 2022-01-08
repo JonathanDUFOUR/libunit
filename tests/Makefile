@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 04:39:59 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/08 12:51:34 by jodufour         ###   ########.fr        #
+#   Updated: 2022/01/08 15:31:20 by                  ###   ########.fr       # #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,10 @@ SRC				=	\
 						01_basic_test.c			\
 						02_null_test.c			\
 					}							\
+					${addprefix math/,			\
+						00_launcher.c			\
+						01_sigfpe_test.c		\
+					}							\
 					${addprefix strcmp/,		\
 						00_launcher.c			\
 						01_basic_test.c			\
@@ -81,6 +85,7 @@ CFLAGS			+=	-MMD -MP
 CFLAGS			+=	-I${UNIT_INC_DIR}
 
 LDFLAGS			=	-L${UNIT_DIR} -lunit
+LDFLAGS			+= 	-lm
 
 VG_OPTION		=	--track-fds=yes
 VG_OPTION		+=	--show-leak-kinds=all
