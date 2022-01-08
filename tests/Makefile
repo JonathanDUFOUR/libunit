@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 04:39:59 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/08 09:19:12 by jodufour         ###   ########.fr        #
+#    Updated: 2022/01/08 12:51:34 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,22 +45,24 @@ UNIT_A			:=	${addprefix ${UNIT_DIR}, ${UNIT_A}}
 #            SOURCE FILES            #
 ######################################
 SRC				=	\
-					${addprefix strchr/,	\
-						00_launcher.c		\
-						01_basic_test.c		\
-						02_null_test.c		\
-					}						\
-					${addprefix strcmp/,	\
-						00_launcher.c		\
-						01_basic_test.c		\
-						02_null_test.c		\
-					}						\
-					${addprefix strlen/,	\
-						00_launcher.c		\
-						01_basic_test.c		\
-						02_null_test.c		\
-					}						\
-					main.c					\
+					${addprefix strchr/,		\
+						00_launcher.c			\
+						01_basic_test.c			\
+						02_null_test.c			\
+					}							\
+					${addprefix strcmp/,		\
+						00_launcher.c			\
+						01_basic_test.c			\
+						02_null_test.c			\
+					}							\
+					${addprefix strlen/,		\
+						00_launcher.c			\
+						01_basic_test.c			\
+						02_null_test.c			\
+						03_bad_len_test.c		\
+						04_uninitialized_test.c	\
+					}							\
+					main.c						\
 					ratio.c
 
 ######################################

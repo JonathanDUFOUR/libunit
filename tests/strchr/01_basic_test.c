@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 07:10:58 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 07:14:16 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/08 15:19:03 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,9 @@
 
 int	strchr_basic_test(void)
 {
-	char	str[] = "test";
-	char	c;
-	char	*res_exp;
-	char	*res_act;
+	char const	str[] = "test";
 
-	c = 's';
-	res_exp = &str[2];
-
-	res_act = strchr(str, c);
-	
-	if (res_exp == res_act)
+	if (strchr(str, 's') == str + 2)
 		return (0);
 	else
 		return (-1);

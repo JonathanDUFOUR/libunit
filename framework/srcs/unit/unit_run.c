@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 07:20:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 09:11:47 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/08 15:18:26 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	__output(char const *funcname, char const *testname,
 int	unit_run(t_unit *const node)
 {
 	pid_t	child;
-	int	status;
+	int		status;
 
 	status = 0;
 	child = fork();
@@ -70,6 +70,9 @@ int	unit_run(t_unit *const node)
 	}
 	if (wait(&status) == -1)
 		return (EXIT_FAILURE);
-	status = (char)(status >> 8);
+	if (WIFEXITED(status))
+		status = (char)WEXITSTATUS(status);
+	else if (WIFSIGNALED(status))
+		status = WTERMSIG(status);
 	return (__output(node->funcname, node->testname, status));
 }
