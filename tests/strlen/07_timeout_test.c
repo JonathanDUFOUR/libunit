@@ -1,37 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   g_test.h                                           :+:      :+:    :+:   */
+/*   06_abort_test.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 04:58:11 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 14:38:49 by                  ###   ########.fr       */
+/*   Created: 2022/01/08 15:46:31 by jodufour          #+#    #+#             */
+/*   Updated: 2022/01/09 14:39:47 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef G_TEST_H
-# define G_TEST_H
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
 
-# include "t_fct.h"
-
-typedef struct s_test	t_test;
-
-struct s_test
+int	timeout_test(void)
 {
-	char const	*name;
-	t_fct const	call;
-};
-
-int	strcmp_basic_test(void);
-int	strcmp_null_test(void);
-int	strcmp_illegal_test(void);
-
-static t_test const		g_test[] = {
-{"Basic test", strcmp_basic_test},
-{"NULL test", strcmp_null_test},
-{"Illegal test", strcmp_illegal_test},
-{0}
-};
-
-#endif
+	sleep(10);
+	return (EXIT_SUCCESS);
+}

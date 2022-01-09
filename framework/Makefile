@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 00:07:04 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/09 12:12:40 by jodufour         ###   ########.fr        #
+#   Updated: 2022/01/09 15:03:30 by                  ###   ########.fr       # #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ SRC		=	\
 				unit_new.c					\
 				unit_run.c					\
 			}								\
+			output.c						\
 			putsize.c						\
 			redirect.c
 
