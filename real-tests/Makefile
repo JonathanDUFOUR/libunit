@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/09 16:18:45 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/09 21:19:34 by jodufour         ###   ########.fr        #
+#    Updated: 2022/01/09 23:16:29 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -143,6 +143,11 @@ CFLAGS				+=	-I${FT_PRINTF_INC_DIR}
 LDFLAGS				=	-L${UNIT_DIR} -lunit
 LDFLAGS				+=	-L${FT_PRINTF_DIR} -lftprintf
 
+VG_OPTION			=	--track-fds=yes
+VG_OPTION			+=	--show-leak-kinds=all
+VG_OPTION			+=	--leak-check=full
+VG_OPTION			+=	--trace-children=yes
+
 ifeq (${DEBUG}, 1)
 	CFLAGS	+=	-g
 endif
@@ -166,6 +171,13 @@ ${UNIT_A}:
 
 ${FT_PRINTF_A}:
 	${MAKE} ${@F} -C ${@D}
+
+test: ${NAME}
+ifeq (${DEBUG}, 1)
+	valgrind ${VG_OPTION} ./${NAME}
+else
+	./${NAME}
+endif
 
 clean:
 	${RM} ${OBJ_DIR} ${NAME} vgcore.*

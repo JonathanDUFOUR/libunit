@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 07:20:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 22:41:29 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 23:12:08 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,9 @@ int	output_to_logfile(char const *logfile_name)
 	if (logfile_fd == -1)
 		return (EXIT_FAILURE);
 	if (dup2(logfile_fd, STDOUT_FILENO) == -1)
+	{
+		close(logfile_fd);
 		return (EXIT_FAILURE);
+	}
 	return (EXIT_SUCCESS);
 }
