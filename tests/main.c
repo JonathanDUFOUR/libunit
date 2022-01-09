@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:15:17 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 16:13:23 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 19:12:01 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,17 @@ int	main(int const ac, char const **av)
 	if (ac == 1)
 		return (__every_launchers());
 	else
+	{
+		if (!__strcmp(av[1], "-o"))
+		{
+			if (ac > 2)
+				if (redirect_std_out_to_log(av) == EXIT_FAILURE)
+					return (EXIT_FAILURE);
+			if (ac == 3)
+				return (__every_launchers());
+			else if (ac > 3)
+				return (__specific_launchers(av + 3));
+		}
 		return (__specific_launchers(av + 1));
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 07:20:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 17:29:25 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 19:11:55 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	__execute_tests(t_unit *const node)
 	int		status;
 
 	call = node->call;
-	output_name(node->funcname, node->testname);
+	output_name(node->funcname, node->testname, STDOUT_FILENO);
 	unit_clear(node);
 	__init_timeout_handler();
 	status = call();
@@ -85,6 +85,6 @@ int	unit_run(t_unit *const node)
 		__execute_tests(node);
 	if (wait(&status) == -1)
 		return (EXIT_FAILURE);
-	status = __translate_status(status);
-	return (output_status(status));
+	status = __translate_signal(status);
+	return (output_status(status, STDOUT_FILENO));
 }
