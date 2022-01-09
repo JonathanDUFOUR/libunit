@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 04:39:59 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/09 15:24:53 by jodufour         ###   ########.fr        #
+#   Updated: 2022/01/09 15:37:31 by                  ###   ########.fr       # #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,6 @@ SRC				=	\
 					${addprefix write/,			\
 						00_launcher.c			\
 						01_basic_test.c			\
-						02_pipe_test.c			\
 					}							\
 					main.c
 

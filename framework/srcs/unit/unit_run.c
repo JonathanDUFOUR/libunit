@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 07:20:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 15:48:08 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 17:12:50 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,36 @@
 #include "unit.h"
 #include "t_unit.h"
 #include "internal_functions.h"
+#include<signal.h>
+#include<sys/time.h>
+#include <unistd.h>
+#include <assert.h>
+#include <string.h>
 
-static void	__execute_watchdog(void)
+static void	__timer_handler(int sig)
 {
-	sleep(TIMEOUT_VALUE);
+	(void) sig;
 	exit(-2);
+}
+
+static void	__init_timeout_handler(void)
+{
+	struct sigaction	act;
+	struct timeval		interval;
+	struct itimerval	period;
+	sigset_t			block ;
+
+	sigemptyset(&block);
+	sigaddset(&block, SIGVTALRM);
+	bzero(&act, sizeof(act));
+	act.sa_handler = __timer_handler;
+	if (sigaction(SIGVTALRM, &act, NULL))
+		exit(EXIT_FAILURE);
+	interval.tv_sec = 1;
+	interval.tv_usec = 0;
+	period.it_interval = interval;
+	period.it_value = interval;
+	setitimer(ITIMER_VIRTUAL, &period, NULL);
 }
 
 static void	__execute_tests(t_unit *const node)
@@ -32,6 +57,7 @@ static void	__execute_tests(t_unit *const node)
 	call = node->call;
 	output_name(node->funcname, node->testname);
 	unit_clear(node);
+	__init_timeout_handler();
 	status = call();
 	exit(status);
 }
@@ -53,7 +79,6 @@ static int	__translate_signal(int raw_status)
 int	unit_run(t_unit *const node)
 {
 	pid_t	worker;
-	pid_t	watchdog;
 	int		status;
 
 	worker = fork();
@@ -61,10 +86,7 @@ int	unit_run(t_unit *const node)
 		return (EXIT_FAILURE);
 	if (!worker)
 		__execute_tests(node);
-	watchdog = fork();
-	if (!watchdog)
-		__execute_watchdog();
-	if (wait(&status) == -1 || wait(NULL) == -1)
+	if (wait(&status) == -1)
 		return (EXIT_FAILURE);
 	status = __translate_signal(status);
 	return (output_status(status));

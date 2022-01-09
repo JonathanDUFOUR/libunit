@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:58:11 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 15:03:41 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 15:37:31 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,9 @@ struct s_test
 };
 
 int	write_basic_test(void);
-int	write_pipe_test(void);
 
 static t_test const		g_test[] = {
 {"Basic test", write_basic_test},
-{"Pipe test", write_pipe_test},
 {0}
 };
 
