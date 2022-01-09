@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:53:36 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 09:32:35 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 22:39:23 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	strcpy_misaligned_test(void)
 	cptr = malloc(sizeof(int) + 1);
 	iptr = (int *)++cptr;
 	*iptr = 42;
-	free(cptr);
+	free(--cptr);
 	if (strcpy(dst, src) == dst && !strcmp(dst, src))
 		return (0);
 	else

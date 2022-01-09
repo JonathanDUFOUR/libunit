@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 05:17:30 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 19:10:43 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 22:18:17 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@
 
 # include <stddef.h>
 
+int		output_to_logfile(char const *logfile_name)
+		__attribute__((nonnull));
 int		redirect_init(void);
 int		redirect_end(void);
-int		redirect_std_out_to_log(char const **av);
 
 #endif

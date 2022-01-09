@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 07:20:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 19:11:07 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 22:41:29 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static size_t	__len(char const *str)
 	return (ptr - str);
 }
 
-void	output_name(char const *funcname, char const *testname, int fd)
+void	output_name(char const *funcname, char const *testname, int const fd)
 {
 	write(fd, "\t", 1);
 	write(fd, funcname, __len(funcname));
@@ -34,7 +34,7 @@ void	output_name(char const *funcname, char const *testname, int fd)
 	write(fd, ": ", 2);
 }
 
-int	output_status(int const status, int fd)
+int	output_status(int const status, int const fd)
 {
 	int	i;
 
@@ -48,8 +48,8 @@ int	output_status(int const status, int fd)
 	return (status);
 }
 
-void	output_check(size_t successful_test_count,
-			size_t total_test_count, int fd)
+void	output_check(size_t const successful_test_count,
+size_t const total_test_count, int const fd)
 {
 	putsize(successful_test_count);
 	write(fd, "/", 1);
@@ -57,14 +57,14 @@ void	output_check(size_t successful_test_count,
 	write(fd, " tests checked\n", 15);
 }
 
-int	redirect_std_out_to_log(char const **av)
+int	output_to_logfile(char const *logfile_name)
 {
-	int	log_file_fd;
+	int	logfile_fd;
 
-	log_file_fd = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (log_file_fd == -1)
+	logfile_fd = open(logfile_name, O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (logfile_fd == -1)
 		return (EXIT_FAILURE);
-	if (dup2(log_file_fd, STDOUT_FILENO) == -1)
+	if (dup2(logfile_fd, STDOUT_FILENO) == -1)
 		return (EXIT_FAILURE);
 	return (EXIT_SUCCESS);
 }

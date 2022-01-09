@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 08:13:02 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 12:35:50 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 22:33:26 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	redirect_init(void)
 }
 
 /*
-	Close the previously opened pipe, and restore the 
+	Close the previously opened pipe, and restore stdin and atdout
 */
 int	redirect_end(void)
 {
