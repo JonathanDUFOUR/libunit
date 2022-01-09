@@ -61,7 +61,7 @@ DEP		=	${OBJ:.o=.d}
 #######################################
 #                FLAGS                #
 #######################################
-CFLAGS	=	-Wall -Wextra #-Werror
+CFLAGS	=	-Wall -Wextra -Werror
 CFLAGS	+=	-MMD -MP
 CFLAGS	+=	-I${INC_DIR}
 CFLAGS	+=	-I${PRV_DIR}
