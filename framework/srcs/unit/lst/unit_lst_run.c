@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 06:17:18 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 15:17:56 by                  ###   ########.fr       */
+/*   Updated: 2022/01/09 18:30:46 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <unistd.h>
 #include "t_unit_lst.h"
 #include "internal_functions.h"
+
 /*
 	Run each function contained in the given unit list `lst` in a child process
 */
@@ -35,9 +36,6 @@ int	unit_lst_run(t_unit_lst *const lst)
 		check += (size_t) !ret;
 		curr = curr->next;
 	}
-	putsize(check);
-	write(STDOUT_FILENO, "/", 1);
-	putsize(lst->size);
-	write(STDOUT_FILENO, " tests checked\n", 15);
+	output_check(check, lst->size, STDOUT_FILENO);
 	return (EXIT_SUCCESS);
 }

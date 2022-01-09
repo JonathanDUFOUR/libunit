@@ -6,13 +6,12 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:15:17 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 11:40:09 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 18:59:32 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
 #include "unit.h"
 #include "lookup_launch.h"
 
@@ -85,5 +84,17 @@ int	main(int const ac, char const **av)
 	if (ac == 1)
 		return (__every_launchers());
 	else
+	{
+		if (!__strcmp(av[1], "-o"))
+		{
+			if (ac > 2)
+				if (redirect_std_out_to_log(av) == EXIT_FAILURE)
+					return (EXIT_FAILURE);
+			if (ac == 3)
+				return (__every_launchers());
+			else if (ac > 3)
+				return (__specific_launchers(av + 3));
+		}
 		return (__specific_launchers(av + 1));
+	}
 }
