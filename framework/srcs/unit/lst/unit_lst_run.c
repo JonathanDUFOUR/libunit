@@ -6,24 +6,14 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 06:17:18 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 08:34:08 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 15:17:56 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
 #include "t_unit_lst.h"
-
-static void	__putsize(size_t const nb)
-{
-	char	d;
-
-	if (nb > 9)
-		__putsize(nb / 10);
-	d = (char)(nb % 10) + '0';
-	write(STDOUT_FILENO, &d, 1);
-}
-
+#include "internal_functions.h"
 /*
 	Run each function contained in the given unit list `lst` in a child process
 */
@@ -45,9 +35,9 @@ int	unit_lst_run(t_unit_lst *const lst)
 		check += (size_t) !ret;
 		curr = curr->next;
 	}
-	__putsize(check);
+	putsize(check);
 	write(STDOUT_FILENO, "/", 1);
-	__putsize(lst->size);
+	putsize(lst->size);
 	write(STDOUT_FILENO, " tests checked\n", 15);
 	return (EXIT_SUCCESS);
 }
