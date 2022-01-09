@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 07:59:42 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 15:14:30 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 15:25:07 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ struct s_result
 static t_result const	g_result[] = {
 {0, GREEN "OK" RESET},
 {-1, RED "KO" RESET},
+{-2, RED "TIMEOUT" RESET},
 {SIGSEGV, RED "SIGSEGV" RESET},
 {SIGBUS, RED "SIGBUS" RESET},
 {SIGABRT, RED "SIGABRT" RESET},

@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 04:39:59 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/09 15:07:12 by jodufour         ###   ########.fr        #
+#    Updated: 2022/01/09 15:24:53 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ SRC				=	\
 						04_uninitialized_test.c	\
 						05_lorem_ipsum_test.c	\
                         06_abort_test.c			\
+                        07_timeout_test.c		\
 					}							\
 					${addprefix write/,			\
 						00_launcher.c			\

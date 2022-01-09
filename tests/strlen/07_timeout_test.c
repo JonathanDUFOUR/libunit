@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit.h                                             :+:      :+:    :+:   */
+/*   06_abort_test.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 05:17:30 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 15:17:10 by                  ###   ########.fr       */
+/*   Created: 2022/01/08 15:46:31 by jodufour          #+#    #+#             */
+/*   Updated: 2022/01/09 14:39:47 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNIT_H
-# define UNIT_H
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
 
-# include <stddef.h>
-
-int		redirect_init(void);
-int		redirect_end(void);
-
-#endif
+int	timeout_test(void)
+{
+	sleep(10);
+	return (EXIT_SUCCESS);
+}

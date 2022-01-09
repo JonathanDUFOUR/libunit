@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit.h                                             :+:      :+:    :+:   */
+/*   unit_run.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 05:17:30 by jodufour          #+#    #+#             */
+/*   Created: 2022/01/08 07:20:05 by jodufour          #+#    #+#             */
 /*   Updated: 2022/01/09 15:17:10 by                  ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNIT_H
-# define UNIT_H
+#ifndef INTERNAL_FUNCTIONS_H
+# define INTERNAL_FUNCTIONS_H
 
-# include <stddef.h>
+void	putsize(size_t const nb);
+void	output_name(char const *funcname, char const *testname);
 
-int		redirect_init(void);
-int		redirect_end(void);
+int		output_status(int const status);
 
-#endif
+#endif //INTERNAL_FUNCTIONS_H

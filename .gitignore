@@ -5,3 +5,5 @@
 **.out
 vgcore.*
 .vscode
+*/.idea/*
+/.idea/*
