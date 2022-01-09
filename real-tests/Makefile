@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/09 16:18:45 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/09 18:52:05 by jodufour         ###   ########.fr        #
+#    Updated: 2022/01/09 21:19:34 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,31 +51,77 @@ FT_PRINTF_A			:=	${addprefix ${FT_PRINTF_DIR}, ${FT_PRINTF_A}}
 #            SOURCE FILES            #
 ######################################
 SRC					=	\
-						${addprefix cvrt_c/,	\
-							00_launcher.c		\
-							01_a_test.c			\
-						}						\
-						${addprefix cvrt_d/,	\
-							00_launcher.c		\
-						}						\
-						${addprefix cvrt_i/,	\
-							00_launcher.c		\
-						}						\
-						${addprefix cvrt_p/,	\
-							00_launcher.c		\
-						}						\
-						${addprefix cvrt_s/,	\
-							00_launcher.c		\
-						}						\
-						${addprefix cvrt_u/,	\
-							00_launcher.c		\
-						}						\
-						${addprefix cvrt_x/,	\
-							00_launcher.c		\
-						}						\
-						${addprefix literal/,	\
-							00_launcher.c		\
-						}						\
+						${addprefix cvrt_c/,		\
+							00_launcher.c			\
+							01_a_test.c				\
+							02_s_test.c				\
+							03_m_test.c				\
+							04_r_test.c				\
+							05_zero_test.c			\
+							06_f_o_o_b_a_r_test.c	\
+						}							\
+						${addprefix cvrt_d/,		\
+							00_launcher.c			\
+							01_0_test.c				\
+							02_42_test.c			\
+							03_m42_test.c			\
+							04_intmax_test.c		\
+							05_intmin_test.c		\
+							06_uintmax_test.c		\
+						}							\
+						${addprefix cvrt_i/,		\
+							00_launcher.c			\
+							01_0_test.c				\
+							02_42_test.c			\
+							03_m42_test.c			\
+							04_intmax_test.c		\
+							05_intmin_test.c		\
+							06_uintmax_test.c		\
+						}							\
+						${addprefix cvrt_p/,		\
+							00_launcher.c			\
+							01_null_test.c			\
+							02_42_test.c			\
+							03_memcmp_test.c		\
+							04_printf_test.c		\
+							05_longmax_test.c		\
+							06_uintptrmax_test.c	\
+						}							\
+						${addprefix cvrt_s/,		\
+							00_launcher.c			\
+							01_null_test.c			\
+							02_empty_test.c			\
+							03_short_test.c			\
+							04_medium_test.c		\
+							05_large_test.c			\
+							06_multistring_test.c	\
+						}							\
+						${addprefix cvrt_u/,		\
+							00_launcher.c			\
+							01_0_test.c				\
+							02_9_test.c				\
+							03_42_test.c			\
+							04_intmax_test.c		\
+							05_uintmax_test.c		\
+							06_longmax_test.c		\
+						}							\
+						${addprefix cvrt_x/,		\
+							00_launcher.c			\
+							01_0_test.c				\
+							02_42_test.c			\
+							03_123456_test.c		\
+							04_intmax_test.c		\
+							05_uintmax_test.c		\
+							06_longmax_test.c		\
+						}							\
+						${addprefix literal/,		\
+							00_launcher.c			\
+							01_null_test.c			\
+							02_empty_test.c			\
+							03_short_test.c			\
+							04_medium_test.c		\
+							05_large_test.c			\
+						}							\
 						main.c
 
 ######################################

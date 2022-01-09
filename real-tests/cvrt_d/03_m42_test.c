@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_a_test.c                                        :+:      :+:    :+:   */
+/*   03_m42_test.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 17:41:59 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 21:52:34 by jodufour         ###   ########.fr       */
+/*   Created: 2022/01/09 19:38:18 by jodufour          #+#    #+#             */
+/*   Updated: 2022/01/09 21:53:15 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ typedef struct s_data	t_data;
 
 struct s_data
 {
-	char	buff[4097];
-	char	*str0;
-	char	*str1;
-	void	*ent;
-	int		ret0;
-	int		ret1;
-	size_t	len;
-	ssize_t	rd;
+	char		buff[4097];
+	char		*str0;
+	char		*str1;
+	void		*ent;
+	int			ret0;
+	int			ret1;
+	size_t		len;
+	ssize_t		rd;
 };
 
-int	cvrt_c_a_test(void)
+int	cvrt_d_m42_test(void)
 {
 	t_data	d;
 	int		cmp;
@@ -39,7 +39,7 @@ int	cvrt_c_a_test(void)
 	memset(&d, 0, sizeof(t_data));
 	if (redirect_init())
 		return (EXIT_FAILURE);
-	d.ret0 = printf("something before %c", 'a');
+	d.ret0 = printf("%d", -42);
 	fflush(stdout);
 	if (d.ret0 > 0)
 		d.rd = read(STDIN_FILENO, d.buff, 4096);
@@ -66,7 +66,7 @@ int	cvrt_c_a_test(void)
 		else
 			d.rd = 0;
 	}
-	d.ret1 = ft_printf("something before %c", 'a');
+	d.ret1 = ft_printf("%d", -42);
 	if (d.ret1 > 0)
 		d.rd = read(STDIN_FILENO, d.buff, 4096);
 	while (d.rd)

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_a_test.c                                        :+:      :+:    :+:   */
+/*   04_medium_test.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 17:41:59 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 21:52:34 by jodufour         ###   ########.fr       */
+/*   Created: 2022/01/09 20:25:52 by jodufour          #+#    #+#             */
+/*   Updated: 2022/01/09 21:53:52 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,21 +17,39 @@
 #include "unit.h"
 #include "ft_printf.h"
 
+#ifdef TEST
+# undef TEST
+#endif
+#define TEST "\
+tutu bar minato tutu lol troll troll tutu lol foo pouic minato pouic minato lol\
+ muf pouic bar muf bar minato lol lol troll muf troll bar pouic pouic bing mina\
+to tutu minato bing minato minato google lol google minato google minato muf mi\
+nato koala google pouic pouic bing troll troll lol koala pouic koala google goo\
+gle minato google bing google muf bar tutu troll muf google muf pouic google go\
+ogle lol tutu google bing pouic tutu bar bar troll muf muf bing tutu troll bar \
+minato minato minato minato minato minato troll google bing tutu tutu tutu goog\
+le lol google koala lol google tutu minato troll minato bing koala koala minato\
+ muf minato google google minato koala bing foo bing troll muf bing bar minato \
+tutu foo tutu muf minato google minato lol pouic google minato troll troll koal\
+a bar troll koala tutu bing google pouic bing bing koala koala bar troll koala \
+muf tutu koala minato minato foo koala minato koala google troll muf google min\
+ato bing bing troll google minato google minato troll bing koala lol lol go"
+
 typedef struct s_data	t_data;
 
 struct s_data
 {
-	char	buff[4097];
-	char	*str0;
-	char	*str1;
-	void	*ent;
-	int		ret0;
-	int		ret1;
-	size_t	len;
-	ssize_t	rd;
+	char		buff[4097];
+	char		*str0;
+	char		*str1;
+	void		*ent;
+	int			ret0;
+	int			ret1;
+	size_t		len;
+	ssize_t		rd;
 };
 
-int	cvrt_c_a_test(void)
+int	literal_medium_test(void)
 {
 	t_data	d;
 	int		cmp;
@@ -39,7 +57,7 @@ int	cvrt_c_a_test(void)
 	memset(&d, 0, sizeof(t_data));
 	if (redirect_init())
 		return (EXIT_FAILURE);
-	d.ret0 = printf("something before %c", 'a');
+	d.ret0 = printf(TEST);
 	fflush(stdout);
 	if (d.ret0 > 0)
 		d.rd = read(STDIN_FILENO, d.buff, 4096);
@@ -66,7 +84,7 @@ int	cvrt_c_a_test(void)
 		else
 			d.rd = 0;
 	}
-	d.ret1 = ft_printf("something before %c", 'a');
+	d.ret1 = ft_printf(TEST);
 	if (d.ret1 > 0)
 		d.rd = read(STDIN_FILENO, d.buff, 4096);
 	while (d.rd)

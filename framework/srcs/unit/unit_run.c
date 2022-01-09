@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 07:20:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 19:11:55 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 19:17:19 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ int	unit_run(t_unit *const node)
 		__execute_tests(node);
 	if (wait(&status) == -1)
 		return (EXIT_FAILURE);
-	status = __translate_signal(status);
+	status = __translate_status(status);
 	return (output_status(status, STDOUT_FILENO));
 }
