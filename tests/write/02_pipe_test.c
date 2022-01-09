@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   g_test.h                                           :+:      :+:    :+:   */
+/*   02_pipe_test.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 04:58:11 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 15:03:41 by jodufour         ###   ########.fr       */
+/*   Created: 2022/01/09 15:02:59 by jodufour          #+#    #+#             */
+/*   Updated: 2022/01/09 15:15:21 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef G_TEST_H
-# define G_TEST_H
+#include <stdlib.h>
+#include <unistd.h>
 
-# include "t_fct.h"
-
-typedef struct s_test	t_test;
-
-struct s_test
+int	write_pipe_test(void)
 {
-	char const	*name;
-	t_fct const	call;
-};
+	int	new_pipe[2];
 
-int	write_basic_test(void);
-int	write_pipe_test(void);
-
-static t_test const		g_test[] = {
-{"Basic test", write_basic_test},
-{"Pipe test", write_pipe_test},
-{0}
-};
-
-#endif
+	if (pipe(new_pipe) == -1)
+		return (EXIT_FAILURE);
+	if (close(new_pipe[0])
+		|| write(new_pipe[1], "FooBar", 6) == -1
+		|| close(new_pipe[1]))
+		return (EXIT_FAILURE);
+	return (0);
+}

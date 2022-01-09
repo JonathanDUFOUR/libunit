@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 07:59:42 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 15:17:07 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 15:14:30 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static t_result const	g_result[] = {
 {SIGABRT, RED "SIGABRT" RESET},
 {SIGFPE, RED "SIGFPE" RESET},
 {SIGILL, RED "SIGILL" RESET},
+{SIGPIPE, RED "SIGPIPE" RESET},
 {0}
 };
 
