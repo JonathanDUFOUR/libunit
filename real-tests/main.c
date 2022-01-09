@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:15:17 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 16:13:23 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 16:12:56 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	__internal_err(int const i)
 		++ptr;
 	write(STDERR_FILENO, "Internal error encountered while running: ", 42);
 	write(STDERR_FILENO, g_launch[i].name, (size_t)(ptr - g_launch[i].name));
-	write(STDERR_FILENO, "tests\n", 6);
+	write(STDERR_FILENO, " tests\n", 6);
 	return (EXIT_FAILURE);
 }
 

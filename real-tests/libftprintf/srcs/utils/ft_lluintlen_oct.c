@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit.h                                             :+:      :+:    :+:   */
+/*   ft_lluintlen_oct.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 05:17:30 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 17:36:22 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/17 20:36:53 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/10 17:37:15 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNIT_H
-# define UNIT_H
+#include "type/t_int.h"
 
-# ifndef TIMOUT_VALUE
-#  define TIMEOUT_VALUE 10
-# endif
+int	ft_lluintlen_oct(t_lluint nb)
+{
+	int	len;
 
-# include <stddef.h>
-
-int	redirect_init(void);
-int	redirect_end(void);
-
-#endif
+	len = 1;
+	while (nb > 7)
+	{
+		++len;
+		nb /= 8;
+	}
+	return (len);
+}

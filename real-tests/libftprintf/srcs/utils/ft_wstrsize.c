@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   07_timeout_test.c                                  :+:      :+:    :+:   */
+/*   ft_wstrsize.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 15:46:31 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 17:08:13 by                  ###   ########.fr       */
+/*   Created: 2021/06/06 16:18:28 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/11 10:39:32 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
+#include "internal.h"
 
-int	timeout_test(void)
+int	ft_wstrsize(wchar_t const *str)
 {
-	while (1)
-		;
-	return (EXIT_SUCCESS);
+	int	size;
+
+	size = 0;
+	while (*str)
+		size += ft_wclen(*str++);
+	return (size);
 }

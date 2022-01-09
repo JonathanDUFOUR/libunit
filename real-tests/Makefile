@@ -5,105 +5,97 @@
 #                                                     +:+ +:+         +:+      #
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/01/08 04:39:59 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/09 17:34:46 by jodufour         ###   ########.fr        #
+#    Created: 2022/01/09 16:18:45 by jodufour          #+#    #+#              #
+#    Updated: 2022/01/09 18:52:05 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################################
 #              COMMANDS              #
 ######################################
-CC				=	clang -c
-LINK			=	clang
-MKDIR			=	mkdir -p
-RM				=	rm -rf
+CC					=	clang -c
+LINK				=	clang
+MKDIR				=	mkdir -p
+RM					=	rm -rf
 
 ######################################
 #             EXECUTABLE             #
 ######################################
-NAME			=	unit_test.out
+NAME				=	unit_test.out
 
 #######################################
 #             DIRECTORIES             #
 #######################################
-SRC_DIR			=	./
-OBJ_DIR			=	objs/
-INC_DIR			=	
-PRV_DIR			=	
+SRC_DIR				=	./
+OBJ_DIR				=	objs/
 
-UNIT_DIR		=	../framework/
-UNIT_INC_DIR	=	include/
-UNIT_INC_DIR	:=	${addprefix ${UNIT_DIR}, ${UNIT_INC_DIR}}
+UNIT_DIR			=	../framework/
+FT_PRINTF_DIR		=	libftprintf/
+
+UNIT_INC_DIR		=	include/
+UNIT_INC_DIR		:=	${addprefix ${UNIT_DIR}, ${UNIT_INC_DIR}}
+
+FT_PRINTF_INC_DIR	=	include/
+FT_PRINTF_INC_DIR	:=	${addprefix ${FT_PRINTF_DIR}, ${FT_PRINTF_INC_DIR}}
 
 #######################################
 #              LIBRARIES              #
 #######################################
-UNIT_A			=	libunit.a
-UNIT_A			:=	${addprefix ${UNIT_DIR}, ${UNIT_A}}
+UNIT_A				=	libunit.a
+UNIT_A				:=	${addprefix ${UNIT_DIR}, ${UNIT_A}}
+
+FT_PRINTF_A			=	libftprintf.a
+FT_PRINTF_A			:=	${addprefix ${FT_PRINTF_DIR}, ${FT_PRINTF_A}}
 
 ######################################
 #            SOURCE FILES            #
 ######################################
-SRC				=	\
-					${addprefix math/,			\
-						00_launcher.c			\
-						01_div_zero_test.c		\
-					}							\
-					${addprefix strchr/,		\
-						00_launcher.c			\
-						01_basic_test.c			\
-						02_null_test.c			\
-					}							\
-					${addprefix strcmp/,		\
-						00_launcher.c			\
-						01_basic_test.c			\
-						02_null_test.c			\
-						03_illegal_test.c		\
-					}							\
-					${addprefix strcpy/,		\
-						00_launcher.c			\
-						01_basic_test.c			\
-						02_bad_cpy_test.c		\
-						03_freed_test.c			\
-						04_misaligned_test.c	\
-					}							\
-					${addprefix strlen/,		\
-						00_launcher.c			\
-						01_basic_test.c			\
-						02_null_test.c			\
-						03_bad_len_test.c		\
-						04_uninitialized_test.c	\
-						05_lorem_ipsum_test.c	\
-						06_abort_test.c			\
-						07_endless_loop_test.c	\
-					}							\
-					${addprefix write/,			\
-						00_launcher.c			\
-						01_basic_test.c			\
-					}							\
-					main.c
+SRC					=	\
+						${addprefix cvrt_c/,	\
+							00_launcher.c		\
+							01_a_test.c			\
+						}						\
+						${addprefix cvrt_d/,	\
+							00_launcher.c		\
+						}						\
+						${addprefix cvrt_i/,	\
+							00_launcher.c		\
+						}						\
+						${addprefix cvrt_p/,	\
+							00_launcher.c		\
+						}						\
+						${addprefix cvrt_s/,	\
+							00_launcher.c		\
+						}						\
+						${addprefix cvrt_u/,	\
+							00_launcher.c		\
+						}						\
+						${addprefix cvrt_x/,	\
+							00_launcher.c		\
+						}						\
+						${addprefix literal/,	\
+							00_launcher.c		\
+						}						\
+						main.c
 
 ######################################
 #            OBJECT FILES            #
 ######################################
-OBJ				=	${SRC:.c=.o}
-OBJ				:=	${addprefix ${OBJ_DIR}, ${OBJ}}
+OBJ					=	${SRC:.c=.o}
+OBJ					:=	${addprefix ${OBJ_DIR}, ${OBJ}}
 
-DEP				=	${OBJ:.o=.d}
+DEP					=	${OBJ:.o=.d}
 
 #######################################
 #                FLAGS                #
 #######################################
-CFLAGS			=	-Wall -Wextra #-Werror
-CFLAGS			+=	-MMD -MP
-CFLAGS			+=	-I${UNIT_INC_DIR}
+CFLAGS				=	-Wall -Wextra -Werror
+CFLAGS				+=	-MMD -MP
+CFLAGS				+=	-I${UNIT_INC_DIR}
+CFLAGS				+=	-I${FT_PRINTF_INC_DIR}
 
-LDFLAGS			=	-L${UNIT_DIR} -lunit
-
-VG_OPTION		=	--track-fds=yes
-VG_OPTION		+=	--show-leak-kinds=all
-VG_OPTION		+=	--leak-check=full
-VG_OPTION		+=	--trace-children=yes
+LDFLAGS				=	-L${UNIT_DIR} -lunit
+LDFLAGS				+=	-L${FT_PRINTF_DIR} -lftprintf
 
 ifeq (${DEBUG}, 1)
 	CFLAGS	+=	-g
@@ -112,7 +104,7 @@ endif
 #######################################
 #                RULES                #
 #######################################
-${NAME}: ${OBJ} ${UNIT_A}
+${NAME}: ${OBJ} ${UNIT_A} ${FT_PRINTF_A}
 	${LINK} ${OBJ} ${LDFLAGS} ${OUTPUT_OPTION}
 
 all: ${NAME}
@@ -126,12 +118,8 @@ ${OBJ_DIR}%.o: ${SRC_DIR}%.c
 ${UNIT_A}:
 	${MAKE} ${@F} -C ${@D}
 
-test: ${NAME}
-ifeq (${DEBUG}, 1)
-	valgrind ${VG_OPTION} ./${NAME}
-else
-	./${NAME}
-endif
+${FT_PRINTF_A}:
+	${MAKE} ${@F} -C ${@D}
 
 clean:
 	${RM} ${OBJ_DIR} ${NAME} vgcore.*
@@ -139,9 +127,10 @@ clean:
 fclean:
 	${RM} ${OBJ_DIR} ${NAME} vgcore.*
 	${MAKE} $@ -C ${UNIT_DIR}
+	${MAKE} $@ -C ${FT_PRINTF_DIR}
 
 re: clean all
 
 fre: fclean all
 
-.PHONY: all test clean fclean re fre
+.PHONY: all clean fclean re fre

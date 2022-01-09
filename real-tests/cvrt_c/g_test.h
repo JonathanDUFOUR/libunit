@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:58:11 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 17:33:14 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 19:04:18 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,15 @@ struct s_test
 	t_fct const	call;
 };
 
-int	strlen_basic_test(void);
-int	strlen_null_test(void);
-int	strlen_bad_len_test(void);
-int	strlen_uninitialized_test(void);
-int	strlen_lorem_ipsum_test(void);
-int	strlen_abort_test(void);
-int	strlen_endless_loop_test(void);
+int	cvrt_c_a_test(void);
+int	cvrt_c_S_test(void);
+int	cvrt_c_m_test(void);
+int	cvrt_c_R_test(void);
+int	cvrt_c_zero_test(void);
 
 static t_test const		g_test[] = {
-{"Basic test", strlen_basic_test},
-{"NULL test", strlen_null_test},
-{"Bad len test", strlen_bad_len_test},
-{"Uninitialized test", strlen_uninitialized_test},
-{"Lorem ipsum test", strlen_lorem_ipsum_test},
-{"Abort test", strlen_abort_test},
-{"Endless loop test", strlen_endless_loop_test},
+{"'a'", cvrt_c_a_test},
+{"'S'", cvrt_c_S_test},
 {0}
 };
 

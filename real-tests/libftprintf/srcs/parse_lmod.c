@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit.h                                             :+:      :+:    :+:   */
+/*   parse_lmod.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 05:17:30 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 17:36:22 by jodufour         ###   ########.fr       */
+/*   Created: 2021/06/01 23:12:21 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/11 10:43:50 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNIT_H
-# define UNIT_H
+#include "type/t_ctx.h"
 
-# ifndef TIMOUT_VALUE
-#  define TIMEOUT_VALUE 10
-# endif
-
-# include <stddef.h>
-
-int	redirect_init(void);
-int	redirect_end(void);
-
-#endif
+char	*parse_lmod(char const *format, t_ctx *ctx)
+{
+	if (*format == 'l')
+	{
+		++format;
+		if (*format == 'l' && ++format)
+			ctx->flags |= 1 << 6;
+		else
+			ctx->flags |= 1 << 5;
+	}
+	else if (*format == 'h')
+	{
+		++format;
+		if (*format == 'h' && ++format)
+			ctx->flags |= 1 << 8;
+		else
+			ctx->flags |= 1 << 7;
+	}
+	return ((char *)format);
+}

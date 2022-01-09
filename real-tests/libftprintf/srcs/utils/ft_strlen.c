@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit.h                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 05:17:30 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 17:36:22 by jodufour         ###   ########.fr       */
+/*   Created: 2021/11/10 16:14:01 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/10 18:07:11 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNIT_H
-# define UNIT_H
+#include <stddef.h>
 
-# ifndef TIMOUT_VALUE
-#  define TIMEOUT_VALUE 10
-# endif
+int	ft_strlen(char const *str)
+{
+	register char const	*ptr = str;
 
-# include <stddef.h>
-
-int	redirect_init(void);
-int	redirect_end(void);
-
-#endif
+	while (*ptr)
+		++ptr;
+	return (ptr - str);
+}

@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit.h                                             :+:      :+:    :+:   */
+/*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 05:17:30 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 17:36:22 by jodufour         ###   ########.fr       */
+/*   Created: 2021/11/11 10:36:52 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/11 10:38:40 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNIT_H
-# define UNIT_H
+#include <stdbool.h>
 
-# ifndef TIMOUT_VALUE
-#  define TIMEOUT_VALUE 10
-# endif
-
-# include <stddef.h>
-
-int	redirect_init(void);
-int	redirect_end(void);
-
-#endif
+bool	ft_isdigit(char const c)
+{
+	return (c >= '0' && c <= '9');
+}

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit.h                                             :+:      :+:    :+:   */
+/*   07_endless_loop_test.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 05:17:30 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 17:36:22 by jodufour         ###   ########.fr       */
+/*   Created: 2022/01/08 15:46:31 by jodufour          #+#    #+#             */
+/*   Updated: 2022/01/09 17:33:52 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNIT_H
-# define UNIT_H
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
 
-# ifndef TIMOUT_VALUE
-#  define TIMEOUT_VALUE 10
-# endif
-
-# include <stddef.h>
-
-int	redirect_init(void);
-int	redirect_end(void);
-
-#endif
+int	strlen_endless_loop_test(void)
+{
+	while (strlen("toto"))
+		continue ;
+	if (strlen("toto") == 4)
+		return (0);
+	else
+		return (-1);
+}

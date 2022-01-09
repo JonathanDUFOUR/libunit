@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit_run.c                                         :+:      :+:    :+:   */
+/*   output.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 07:20:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 15:10:08 by                  ###   ########.fr       */
+/*   Updated: 2022/01/09 17:27:21 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ int	output_status(int const status)
 		return (EXIT_FAILURE);
 	write(STDOUT_FILENO, g_result[i].msg, __len(g_result[i].msg));
 	write(STDOUT_FILENO, "\n", 1);
-	return (EXIT_SUCCESS);
+	return (status);
 }

@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit.h                                             :+:      :+:    :+:   */
+/*   padding.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 05:17:30 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 17:36:22 by jodufour         ###   ########.fr       */
+/*   Created: 2021/05/17 13:10:40 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/10 16:51:30 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNIT_H
-# define UNIT_H
+#include <stdlib.h>
+#include <unistd.h>
+#include "enum/e_ret.h"
 
-# ifndef TIMOUT_VALUE
-#  define TIMEOUT_VALUE 10
-# endif
+int	padding(int const c, int padlen)
+{
+	char	*padding;
+	char	*ptr;
 
-# include <stddef.h>
-
-int	redirect_init(void);
-int	redirect_end(void);
-
-#endif
+	padding = malloc((padlen + 1) * sizeof(char));
+	if (!padding)
+		return (MALLOC_ERR);
+	ptr = padding;
+	while (padlen--)
+		*ptr++ = c;
+	*ptr = 0;
+	write(1, padding, ptr - padding);
+	free(padding);
+	return (SUCCESS);
+}

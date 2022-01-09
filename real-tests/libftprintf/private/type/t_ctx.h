@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   unit.h                                             :+:      :+:    :+:   */
+/*   t_ctx.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 05:17:30 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 17:36:22 by jodufour         ###   ########.fr       */
+/*   Created: 2021/11/10 15:15:00 by jodufour          #+#    #+#             */
+/*   Updated: 2021/11/10 15:20:40 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef UNIT_H
-# define UNIT_H
+#ifndef T_CTX_H
+# define T_CTX_H
 
-# ifndef TIMOUT_VALUE
-#  define TIMEOUT_VALUE 10
-# endif
+# include <stdbool.h>
+# include <stdint.h>
+# include "type/t_int.h"
 
-# include <stddef.h>
+typedef struct s_ctx	t_ctx;
 
-int	redirect_init(void);
-int	redirect_end(void);
+struct s_ctx
+{
+	int			len;
+	uint16_t	flags;
+	int			fwidth;
+	int			prec;
+	bool		precised;
+};
 
 #endif

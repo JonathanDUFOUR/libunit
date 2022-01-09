@@ -6,26 +6,23 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 07:20:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/09 17:12:50 by                  ###   ########.fr       */
+/*   Updated: 2022/01/09 17:29:25 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
+#include <signal.h>
+#include <sys/time.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include "internal_functions.h"
 #include "unit.h"
 #include "t_unit.h"
-#include "internal_functions.h"
-#include<signal.h>
-#include<sys/time.h>
-#include <unistd.h>
-#include <assert.h>
-#include <string.h>
 
-static void	__timer_handler(int sig)
+static void	__timer_handler(int const sig __attribute__((unused)))
 {
-	(void) sig;
 	exit(-2);
 }
 
@@ -42,7 +39,7 @@ static void	__init_timeout_handler(void)
 	act.sa_handler = __timer_handler;
 	if (sigaction(SIGVTALRM, &act, NULL))
 		exit(EXIT_FAILURE);
-	interval.tv_sec = 1;
+	interval.tv_sec = TIMEOUT_VALUE;
 	interval.tv_usec = 0;
 	period.it_interval = interval;
 	period.it_value = interval;
@@ -62,7 +59,7 @@ static void	__execute_tests(t_unit *const node)
 	exit(status);
 }
 
-static int	__translate_signal(int raw_status)
+static int	__translate_status(int raw_status)
 {
 	if (WIFEXITED(raw_status))
 		return ((char)WEXITSTATUS(raw_status));
@@ -88,6 +85,6 @@ int	unit_run(t_unit *const node)
 		__execute_tests(node);
 	if (wait(&status) == -1)
 		return (EXIT_FAILURE);
-	status = __translate_signal(status);
+	status = __translate_status(status);
 	return (output_status(status));
 }
