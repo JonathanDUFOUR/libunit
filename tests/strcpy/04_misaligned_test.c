@@ -6,31 +6,40 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:53:36 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 16:56:23 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 09:32:35 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <string.h>
 
-int	strcpy_misaligned_test(void)
-{
-	int *iptr;
-	char *cptr;
-
 #if defined(__GNUC__)
 # if defined(__i386__)
-	/* Enable Alignment Checking on x86 */
-	__asm__("pushf\norl $0x40000,(%esp)\npopf");
+#  define ENABLE_ALIGN_X86 1
+#  define ENABLE_ALIGN_X86_64 0
 # elif defined(__x86_64__)
-	 /* Enable Alignment Checking on x86_64 */
-	__asm__("pushf\norl $0x40000,(%rsp)\npopf");
+#  define ENABLE_ALIGN_X86 0
+#  define ENABLE_ALIGN_X86_64 1
 # endif
 #endif
 
-	cptr = malloc(sizeof(int) + 1);	    
-	iptr = (int *) ++cptr;
+int	strcpy_misaligned_test(void)
+{
+	char		dst[42];
+	char const	src[21] = "Wazaaaa";
+	int			*iptr;
+	char		*cptr;
+
+	if (ENABLE_ALIGN_X86)
+		__asm__("pushf\norl $0x40000,(%esp)\npopf");
+	else if (ENABLE_ALIGN_X86_64)
+		__asm__("pushf\norl $0x40000,(%rsp)\npopf");
+	cptr = malloc(sizeof(int) + 1);
+	iptr = (int *)++cptr;
 	*iptr = 42;
 	free(cptr);
-	return (0);
+	if (strcpy(dst, src) == dst && !strcmp(dst, src))
+		return (0);
+	else
+		return (-1);
 }

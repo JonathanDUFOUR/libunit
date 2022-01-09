@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   01_sigfpe_test.c                                   :+:      :+:    :+:   */
+/*   06_abort_test.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 07:10:58 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 15:56:44 by jodufour         ###   ########.fr       */
+/*   Created: 2022/01/08 15:46:31 by jodufour          #+#    #+#             */
+/*   Updated: 2022/01/09 09:17:21 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <string.h>
 
-int	math_sigfpe_test(void)
+int	strlen_abort_test(void)
 {
-	if (div(0, 0).quot == 0)
+	abort();
+	if (strlen("Pouic") == 5)
 		return (0);
 	else
 		return (-1);

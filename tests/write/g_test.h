@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:58:11 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 16:17:42 by                  ###   ########.fr       */
+/*   Updated: 2022/01/09 08:39:14 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ struct s_test
 	t_fct const	call;
 };
 
-int	redirect_test(void);
+int	write_basic_test(void);
 
 static t_test const		g_test[] = {
-{"redirect test", redirect_test},
+{"Basic test", write_basic_test},
 {0}
 };
 

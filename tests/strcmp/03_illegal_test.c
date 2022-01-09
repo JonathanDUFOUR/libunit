@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   06_free_test.c                                     :+:      :+:    :+:   */
+/*   03_illegal_test.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 15:46:31 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 16:59:10 by jodufour         ###   ########.fr       */
+/*   Created: 2022/01/09 09:55:26 by jodufour          #+#    #+#             */
+/*   Updated: 2022/01/09 11:33:16 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include <string.h>
 
-int	strlen_free_test(void)
+int	strcmp_illegal_test(void)
 {
-	void *const	ptr = &strlen;
-
-	free(ptr);
-	return (0);
+	__asm__("ud2");
+	if (!!strcmp("Hello", "World") == 1)
+		return (0);
+	else
+		return (-1);
 }

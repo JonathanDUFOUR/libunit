@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 00:07:04 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/08 09:03:20 by jodufour         ###   ########.fr        #
+#    Updated: 2022/01/09 12:12:40 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRC		=	\
 				unit_run.c					\
 			}								\
 			putsize.c						\
-			redirect_buffer.c
+			redirect.c
 
 ######################################
 #            OBJECT FILES            #

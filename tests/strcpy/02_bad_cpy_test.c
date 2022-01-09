@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ratio.c                                            :+:      :+:    :+:   */
+/*   02_bad_cpy_test.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/08 09:16:04 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 09:17:29 by jodufour         ###   ########.fr       */
+/*   Created: 2022/01/08 16:03:49 by jodufour          #+#    #+#             */
+/*   Updated: 2022/01/09 10:43:46 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "unit.h"
+#include <string.h>
 
-void	ratio(size_t const checked, size_t const total)
+int	strcpy_bad_cpy_test(void)
 {
-	putsize(checked);
-	write(STDOUT_FILENO, "/", 1);
-	putsize(total);
-	write(STDOUT_FILENO, " functions checked\n", 19);
+	char		dst[42];
+	char const	src[] = "poneyvif";
+
+	if (strcpy(dst, "pouic") == dst && !strcmp(dst, src))
+		return (0);
+	else
+		return (-1);
 }

@@ -6,12 +6,15 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 09:01:44 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 09:19:26 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 08:38:31 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
+/*
+	Print the given size `nb` on stdout
+*/
 void	putsize(size_t const nb)
 {
 	char	d;

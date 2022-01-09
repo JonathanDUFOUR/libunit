@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:58:11 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 15:26:31 by                  ###   ########.fr       */
+/*   Updated: 2022/01/09 09:12:41 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ struct s_test
 	t_fct const	call;
 };
 
-int	math_sigfpe_test(void);
+int	math_div_zero_test(void);
 
 static t_test const		g_test[] = {
-{"SIGFPE test", math_sigfpe_test},
+{"Div zero test", math_div_zero_test},
 {0}
 };
 

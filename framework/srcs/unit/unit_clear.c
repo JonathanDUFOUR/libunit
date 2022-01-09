@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 07:43:36 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 08:12:57 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 13:01:18 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 /*
 	Release every resources contained in the list the given unit `node` is in
-	except the given unit `node` itself
 */
 void	unit_clear(t_unit *const node)
 {
@@ -37,4 +36,5 @@ void	unit_clear(t_unit *const node)
 		free((void *)curr);
 		curr = prev;
 	}
+	free((void *)node);
 }

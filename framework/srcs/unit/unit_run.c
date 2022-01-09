@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 07:20:05 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 15:18:26 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 13:11:05 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <signal.h>
+#include "unit.h"
 #include "t_unit.h"
 #include "lookup_result.h"
 
@@ -27,24 +28,27 @@ static size_t	__len(char const *str)
 	return (ptr - str);
 }
 
-static int	__output(char const *funcname, char const *testname,
-	int const status)
+static void	__output_name(char const *funcname, char const *testname)
+{
+	write(STDOUT_FILENO, "\t", 1);
+	write(STDOUT_FILENO, funcname, __len(funcname));
+	write(STDOUT_FILENO, ": ", 2);
+	write(STDOUT_FILENO, testname, __len(testname));
+	write(STDOUT_FILENO, ": ", 2);
+}
+
+static int	__output_status(int const status)
 {
 	int	i;
 
 	i = 0;
 	while (g_result[i].msg && status != g_result[i].status)
 		++i;
-	if (!g_result[i].msg || write(STDOUT_FILENO, "", 0) == -1)
+	if (!g_result[i].msg)
 		return (EXIT_FAILURE);
-	write(STDOUT_FILENO, "\t", 1);
-	write(STDOUT_FILENO, funcname, __len(funcname));
-	write(STDOUT_FILENO, ": ", 2);
-	write(STDOUT_FILENO, testname, __len(testname));
-	write(STDOUT_FILENO, ": ", 2);
 	write(STDOUT_FILENO, g_result[i].msg, __len(g_result[i].msg));
 	write(STDOUT_FILENO, "\n", 1);
-	return (-!!status);
+	return (EXIT_SUCCESS);
 }
 
 /*
@@ -55,17 +59,19 @@ static int	__output(char const *funcname, char const *testname,
 int	unit_run(t_unit *const node)
 {
 	pid_t	child;
+	t_fct	call;
 	int		status;
 
 	status = 0;
 	child = fork();
-	if (child == -1)
+	if (child == -1 || write(STDOUT_FILENO, "", 0) == -1)
 		return (EXIT_FAILURE);
 	if (!child)
 	{
+		call = node->call;
+		__output_name(node->funcname, node->testname);
 		unit_clear(node);
-		status = node->call();
-		free((void *)node);
+		status = call();
 		exit(status);
 	}
 	if (wait(&status) == -1)
@@ -74,5 +80,5 @@ int	unit_run(t_unit *const node)
 		status = (char)WEXITSTATUS(status);
 	else if (WIFSIGNALED(status))
 		status = WTERMSIG(status);
-	return (__output(node->funcname, node->testname, status));
+	return (__output_status(status));
 }

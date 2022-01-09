@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 16:00:37 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 16:55:56 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 10:41:54 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ struct s_test
 };
 
 int	strcpy_basic_test(void);
-int	strcpy_const_test(void);
+int	strcpy_bad_cpy_test(void);
 int	strcpy_freed_test(void);
 int	strcpy_misaligned_test(void);
 
 static t_test const		g_test[] = {
 {"Basic test", strcpy_basic_test},
-{"Const test", strcpy_const_test},
+{"Bad copy test", strcpy_bad_cpy_test},
 {"Freed test", strcpy_freed_test},
 {"Misaligned test", strcpy_misaligned_test},
 {0}

@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:15:17 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 15:36:36 by                  ###   ########.fr       */
+/*   Updated: 2022/01/09 11:40:09 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include <stdio.h>
 #include "unit.h"
 #include "lookup_launch.h"
-
-void	ratio(size_t const checked, size_t const total);
 
 static int	__internal_err(int const i)
 {
@@ -41,33 +39,25 @@ static int	__strcmp(char const *str0, char const *str1)
 
 static int	__every_launchers(void)
 {
-	size_t	checked;
-	size_t	i;
-	int		ret;
+	int	ret;
+	int	i;
 
-	checked = 0;
 	i = 0;
 	while (g_launch[i].name && g_launch[i].call)
 	{
 		ret = g_launch[i].call();
 		if (ret == EXIT_FAILURE)
 			return (__internal_err(i));
-		checked += (size_t) !ret;
 		++i;
 	}
-	ratio(checked, i);
 	return (EXIT_SUCCESS);
 }
 
 static int	__specific_launchers(char const **av)
 {
-	size_t	checked;
-	size_t	total;
-	size_t	i;
-	int		ret;
+	int	ret;
+	int	i;
 
-	checked = 0;
-	total = 0;
 	while (*av)
 	{
 		i = 0;
@@ -78,13 +68,10 @@ static int	__specific_launchers(char const **av)
 			ret = g_launch[i].call();
 			if (ret == EXIT_FAILURE)
 				return (__internal_err(i));
-			checked += (size_t) !ret;
-			++total;
 			++i;
 		}
 		++av;
 	}
-	ratio(checked, total);
 	return (EXIT_SUCCESS);
 }
 

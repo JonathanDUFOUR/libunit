@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 04:39:59 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/08 17:06:02 by jodufour         ###   ########.fr        #
+#    Updated: 2022/01/09 11:39:18 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,26 +47,23 @@ UNIT_A			:=	${addprefix ${UNIT_DIR}, ${UNIT_A}}
 SRC				=	\
 					${addprefix math/,			\
 						00_launcher.c			\
-						01_sigfpe_test.c		\
+						01_div_zero_test.c		\
 					}							\
 					${addprefix strchr/,		\
 						00_launcher.c			\
 						01_basic_test.c			\
 						02_null_test.c			\
 					}							\
-					${addprefix write/,			\
-						00_launcher.c			\
-						01_redirect_test.c		\
-					}							\
 					${addprefix strcmp/,		\
 						00_launcher.c			\
 						01_basic_test.c			\
 						02_null_test.c			\
+						03_illegal_test.c		\
 					}							\
 					${addprefix strcpy/,		\
 						00_launcher.c			\
 						01_basic_test.c			\
-						02_const_test.c			\
+						02_bad_cpy_test.c		\
 						03_freed_test.c			\
 						04_misaligned_test.c	\
 					}							\
@@ -77,10 +74,13 @@ SRC				=	\
 						03_bad_len_test.c		\
 						04_uninitialized_test.c	\
 						05_lorem_ipsum_test.c	\
-                        06_free_test.c			\
+                        06_abort_test.c			\
 					}							\
-					main.c						\
-					ratio.c
+					${addprefix write/,			\
+						00_launcher.c			\
+						01_basic_test.c			\
+					}							\
+					main.c
 
 ######################################
 #            OBJECT FILES            #

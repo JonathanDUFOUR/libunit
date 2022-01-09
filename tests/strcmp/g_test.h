@@ -6,7 +6,7 @@
 /*   By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/08 04:58:11 by jodufour          #+#    #+#             */
-/*   Updated: 2022/01/08 07:15:26 by jodufour         ###   ########.fr       */
+/*   Updated: 2022/01/09 10:23:59 by jodufour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ struct s_test
 
 int	strcmp_basic_test(void);
 int	strcmp_null_test(void);
+int	strcmp_illegal_test(void);
 
 static t_test const		g_test[] = {
 {"Basic test", strcmp_basic_test},
 {"NULL test", strcmp_null_test},
+{"Illegal test", strcmp_illegal_test},
 {0}
 };
 
