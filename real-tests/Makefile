@@ -6,14 +6,14 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/09 16:18:45 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/09 21:19:34 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/19 21:42:58 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################################
 #              COMMANDS              #
 ######################################
-CC					=	clang -c
+CC					=	clang
 LINK				=	clang
 MKDIR				=	mkdir -p
 RM					=	rm -rf
@@ -30,11 +30,10 @@ SRC_DIR				=	./
 OBJ_DIR				=	objs/
 
 UNIT_DIR			=	../framework/
-FT_PRINTF_DIR		=	libftprintf/
-
 UNIT_INC_DIR		=	include/
 UNIT_INC_DIR		:=	${addprefix ${UNIT_DIR}, ${UNIT_INC_DIR}}
 
+FT_PRINTF_DIR		=	libftprintf/
 FT_PRINTF_INC_DIR	=	include/
 FT_PRINTF_INC_DIR	:=	${addprefix ${FT_PRINTF_DIR}, ${FT_PRINTF_INC_DIR}}
 
@@ -135,7 +134,8 @@ DEP					=	${OBJ:.o=.d}
 #######################################
 #                FLAGS                #
 #######################################
-CFLAGS				=	-Wall -Wextra -Werror
+CFLAGS				=	-c
+CFLAGS				+=	-Wall -Wextra -Werror
 CFLAGS				+=	-MMD -MP
 CFLAGS				+=	-I${UNIT_INC_DIR}
 CFLAGS				+=	-I${FT_PRINTF_INC_DIR}
@@ -150,6 +150,8 @@ endif
 #######################################
 #                RULES                #
 #######################################
+.PHONY: all clean fclean re fre
+
 ${NAME}: ${OBJ} ${UNIT_A} ${FT_PRINTF_A}
 	${LINK} ${OBJ} ${LDFLAGS} ${OUTPUT_OPTION}
 
@@ -159,12 +161,9 @@ all: ${NAME}
 
 ${OBJ_DIR}%.o: ${SRC_DIR}%.c
 	@${MKDIR} ${@D}
-	${CC} ${CFLAGS} $< ${OUTPUT_OPTION}
+	${CC} $< ${CFLAGS} ${OUTPUT_OPTION}
 
-${UNIT_A}:
-	${MAKE} ${@F} -C ${@D}
-
-${FT_PRINTF_A}:
+${UNIT_A} ${FT_PRINTF_A}:
 	${MAKE} ${@F} -C ${@D}
 
 clean:
@@ -179,4 +178,5 @@ re: clean all
 
 fre: fclean all
 
-.PHONY: all clean fclean re fre
+-include ${HOME}/Templates/mk_files/coffee.mk
+-include ${HOME}/Templates/mk_files/norm.mk

@@ -6,14 +6,14 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 04:39:59 by jodufour          #+#    #+#              #
-#    Updated: 2022/01/09 22:36:40 by jodufour         ###   ########.fr        #
+#    Updated: 2022/05/19 21:46:01 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ######################################
 #              COMMANDS              #
 ######################################
-CC				=	clang -c
+CC				=	clang
 LINK			=	clang
 MKDIR			=	mkdir -p
 RM				=	rm -rf
@@ -28,8 +28,6 @@ NAME			=	unit_test.out
 #######################################
 SRC_DIR			=	./
 OBJ_DIR			=	objs/
-INC_DIR			=	
-PRV_DIR			=	
 
 UNIT_DIR		=	../framework/
 UNIT_INC_DIR	=	include/
@@ -95,7 +93,8 @@ DEP				=	${OBJ:.o=.d}
 #######################################
 #                FLAGS                #
 #######################################
-CFLAGS			=	-Wall -Wextra -Werror
+CFLAGS			=	-c
+CFLAGS			+=	-Wall -Wextra -Werror
 CFLAGS			+=	-MMD -MP
 CFLAGS			+=	-I${UNIT_INC_DIR}
 
@@ -113,6 +112,8 @@ endif
 #######################################
 #                RULES                #
 #######################################
+.PHONY: all test clean fclean re fre
+
 ${NAME}: ${OBJ} ${UNIT_A}
 	${LINK} ${OBJ} ${LDFLAGS} ${OUTPUT_OPTION}
 
@@ -145,4 +146,5 @@ re: clean all
 
 fre: fclean all
 
-.PHONY: all test clean fclean re fre
+-include ${HOME}/Templates/mk_files/coffee.mk
+-include ${HOME}/Templates/mk_files/norm.mk
