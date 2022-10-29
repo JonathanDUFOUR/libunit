@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/09 16:18:45 by jodufour          #+#    #+#              #
-#    Updated: 2022/05/19 21:42:58 by jodufour         ###   ########.fr        #
+#    Updated: 2022/10/29 08:40:15 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,25 +26,27 @@ NAME				=	unit_test.out
 #######################################
 #             DIRECTORIES             #
 #######################################
-SRC_DIR				=	./
-OBJ_DIR				=	objs/
+SRC_DIR				=	srcs
+OBJ_DIR				=	objs
 
-UNIT_DIR			=	../framework/
-UNIT_INC_DIR		=	include/
-UNIT_INC_DIR		:=	${addprefix ${UNIT_DIR}, ${UNIT_INC_DIR}}
+PRV_DIR				=	private
 
-FT_PRINTF_DIR		=	libftprintf/
-FT_PRINTF_INC_DIR	=	include/
-FT_PRINTF_INC_DIR	:=	${addprefix ${FT_PRINTF_DIR}, ${FT_PRINTF_INC_DIR}}
+UNIT_DIR			=	../framework
+UNIT_INC_DIR		=	include
+UNIT_INC_DIR		:=	${addprefix ${UNIT_DIR}/, ${UNIT_INC_DIR}}
+
+FT_PRINTF_DIR		=	libftprintf
+FT_PRINTF_INC_DIR	=	include
+FT_PRINTF_INC_DIR	:=	${addprefix ${FT_PRINTF_DIR}/, ${FT_PRINTF_INC_DIR}}
 
 #######################################
 #              LIBRARIES              #
 #######################################
 UNIT_A				=	libunit.a
-UNIT_A				:=	${addprefix ${UNIT_DIR}, ${UNIT_A}}
+UNIT_A				:=	${addprefix ${UNIT_DIR}/, ${UNIT_A}}
 
 FT_PRINTF_A			=	libftprintf.a
-FT_PRINTF_A			:=	${addprefix ${FT_PRINTF_DIR}, ${FT_PRINTF_A}}
+FT_PRINTF_A			:=	${addprefix ${FT_PRINTF_DIR}/, ${FT_PRINTF_A}}
 
 ######################################
 #            SOURCE FILES            #
@@ -127,7 +129,7 @@ SRC					=	\
 #            OBJECT FILES            #
 ######################################
 OBJ					=	${SRC:.c=.o}
-OBJ					:=	${addprefix ${OBJ_DIR}, ${OBJ}}
+OBJ					:=	${addprefix ${OBJ_DIR}/, ${OBJ}}
 
 DEP					=	${OBJ:.o=.d}
 
@@ -137,6 +139,7 @@ DEP					=	${OBJ:.o=.d}
 CFLAGS				=	-c
 CFLAGS				+=	-Wall -Wextra -Werror
 CFLAGS				+=	-MMD -MP
+CFLAGS				+=	-I${PRV_DIR}
 CFLAGS				+=	-I${UNIT_INC_DIR}
 CFLAGS				+=	-I${FT_PRINTF_INC_DIR}
 
@@ -164,7 +167,7 @@ all: ${NAME}
 
 -include ${DEP}
 
-${OBJ_DIR}%.o: ${SRC_DIR}%.c
+${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	@${MKDIR} ${@D}
 	${CC} $< ${CFLAGS} ${OUTPUT_OPTION}
 

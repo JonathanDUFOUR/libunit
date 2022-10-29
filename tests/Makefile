@@ -6,7 +6,7 @@
 #    By: jodufour <jodufour@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/08 04:39:59 by jodufour          #+#    #+#              #
-#    Updated: 2022/05/19 21:46:01 by jodufour         ###   ########.fr        #
+#    Updated: 2022/10/29 08:42:34 by jodufour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,18 +26,20 @@ NAME			=	unit_test.out
 #######################################
 #             DIRECTORIES             #
 #######################################
-SRC_DIR			=	./
-OBJ_DIR			=	objs/
+SRC_DIR			=	srcs
+OBJ_DIR			=	objs
 
-UNIT_DIR		=	../framework/
-UNIT_INC_DIR	=	include/
-UNIT_INC_DIR	:=	${addprefix ${UNIT_DIR}, ${UNIT_INC_DIR}}
+PRV_DIR			=	private
+
+UNIT_DIR		=	../framework
+UNIT_INC_DIR	=	include
+UNIT_INC_DIR	:=	${addprefix ${UNIT_DIR}/, ${UNIT_INC_DIR}}
 
 #######################################
 #              LIBRARIES              #
 #######################################
 UNIT_A			=	libunit.a
-UNIT_A			:=	${addprefix ${UNIT_DIR}, ${UNIT_A}}
+UNIT_A			:=	${addprefix ${UNIT_DIR}/, ${UNIT_A}}
 
 ######################################
 #            SOURCE FILES            #
@@ -86,7 +88,7 @@ SRC				=	\
 #            OBJECT FILES            #
 ######################################
 OBJ				=	${SRC:.c=.o}
-OBJ				:=	${addprefix ${OBJ_DIR}, ${OBJ}}
+OBJ				:=	${addprefix ${OBJ_DIR}/, ${OBJ}}
 
 DEP				=	${OBJ:.o=.d}
 
@@ -96,6 +98,7 @@ DEP				=	${OBJ:.o=.d}
 CFLAGS			=	-c
 CFLAGS			+=	-Wall -Wextra -Werror
 CFLAGS			+=	-MMD -MP
+CFLAGS			+=	-I${PRV_DIR}
 CFLAGS			+=	-I${UNIT_INC_DIR}
 
 LDFLAGS			=	-L${UNIT_DIR} -lunit
@@ -121,7 +124,7 @@ all: ${NAME}
 
 -include ${DEP}
 
-${OBJ_DIR}%.o: ${SRC_DIR}%.c
+${OBJ_DIR}/%.o: ${SRC_DIR}/%.c
 	@${MKDIR} ${@D}
 	${CC} ${CFLAGS} $< ${OUTPUT_OPTION}
 
